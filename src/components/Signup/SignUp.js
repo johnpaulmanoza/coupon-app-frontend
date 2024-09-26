@@ -45,7 +45,7 @@ const SignUpContainer = styled(Stack)(({ theme }) => ({
 }));
 
 export default function SignUp() {
-  const [setMode] = React.useState('light');
+  const [mode, setMode] = React.useState('light');
 
   const [emailError, setEmailError] = React.useState(false);
   const [emailErrorMessage, setEmailErrorMessage] = React.useState('');
@@ -109,6 +109,7 @@ export default function SignUp() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
+      mode: mode,
       name: data.get('name'),
       lastName: data.get('lastName'),
       email: data.get('email'),
