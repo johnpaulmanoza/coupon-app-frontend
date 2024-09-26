@@ -4,12 +4,10 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import AppAppBar from './components/AppAppBar';
 import MainContent from './components/MainContent';
-import Latest from './components/Latest';
 import Footer from './components/Footer';
 
 export default function LandingPage() {
   const [mode, setMode] = React.useState('light');
-  const [showCustomTheme, setShowCustomTheme] = React.useState(true);
   const defaultTheme = createTheme({ palette: { mode } });
   // This code only runs on the client side, to determine the system color preference
   React.useEffect(() => {
@@ -25,16 +23,6 @@ export default function LandingPage() {
       setMode(systemPrefersDark ? 'dark' : 'light');
     }
   }, []);
-
-  const toggleColorMode = () => {
-    const newMode = mode === 'dark' ? 'light' : 'dark';
-    setMode(newMode);
-    localStorage.setItem('themeMode', newMode); // Save the selected mode to localStorage
-  };
-
-  const toggleCustomTheme = () => {
-    setShowCustomTheme((prev) => !prev);
-  };
 
   return (
       <ThemeProvider theme={defaultTheme}>
