@@ -16,8 +16,9 @@ jobs:
       with:
         node-version: ${{ secrets.NODE_VERSION }}
     - run: npm install
+      env: 
+        CI: ""
     - run: npm run build
-    - run: chmod -R 777 node_modules/.cache 
     
     - uses: aws-actions/configure-aws-credentials@v1
       with:
